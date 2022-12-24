@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TaskManager"
+        xmlns:local="clr-namespace:TaskManager" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -19,21 +19,49 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <StackPanel>
-                    <TextBlock Margin="10" Text="Black List" Foreground="Black" FontSize="25" FontWeight="Black"
-                               >
-                        
-                    </TextBlock>
-                </StackPanel>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5.5*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
             </Grid>
-            
-            <ListView Grid.Column="1">
 
+            <ListView  Height="250" Grid.Column="1"
+                ItemsSource="{Binding Processes}" SelectedItem="{Binding SelectedProcess}"
+                Padding="10" Background="White" BorderBrush="Black" BorderThickness="5,0,5,5">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedProcessCommand}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Process Id" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" HorizontalAlignment="Center" Padding="5,2" Text="{Binding Id}" ></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Process Name" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" HorizontalAlignment="Center" Padding="5,2" Text="{Binding ProcessName}" ></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
             </ListView>
         </Grid>
 
         <Grid Grid.Row="1" Background="AliceBlue">
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal"
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal"
                         Margin="0,0,75,0">
                 <Button Margin="5" Background="Green" Foreground="White" FontWeight="Bold" Padding="5">
                     Create Process
@@ -52,6 +80,15 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" >
+                <Grid>
+                    <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                        <TextBlock FontWeight="Bold">Enter Process</TextBlock>
+                    </StackPanel>
+                </Grid>
+                <TextBox Margin="20" Width="250" FontSize="16"></TextBox>
             </StackPanel>
         </Grid>
 

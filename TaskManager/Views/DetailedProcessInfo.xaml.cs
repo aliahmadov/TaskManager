@@ -10,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TaskManager.ViewModels;
 
-namespace TaskManager
+namespace TaskManager.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DetailedProcessInfo.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DetailedProcessInfo : Window
     {
-        public MainWindow()
+        public DetailedProcessInfo()
         {
             InitializeComponent();
-
-            var viewModel = new MainViewModel();
-            this.DataContext = viewModel;
         }
     }
 }
