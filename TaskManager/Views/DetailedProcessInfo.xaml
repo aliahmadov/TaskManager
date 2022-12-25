@@ -36,8 +36,17 @@
                 <TextBlock Margin="5,0,0,0" FontSize="16" Text="{Binding Process.PrivateMemorySize}"></TextBlock>
             </StackPanel>
 
-            
-            
+
+            <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" FontSize="16"> Main Window Handle:</TextBlock>
+                <TextBlock Margin="5,0,0,0" FontSize="16" Text="{Binding Process.MainWindowHandle}"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" FontSize="16"> Handle Count:</TextBlock>
+                <TextBlock Margin="5,0,0,0" FontSize="16" Text="{Binding Process.HandleCount}"></TextBlock>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>

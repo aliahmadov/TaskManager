@@ -9,6 +9,7 @@ namespace TaskManager.ViewModels
 {
     public class DetailedProcessViewModel:BaseViewModel
     {
+
 		private Process process;
 
 		public Process Process
@@ -16,6 +17,11 @@ namespace TaskManager.ViewModels
 			get { return process; }
 			set { process = value; OnPropertyChanged(); }
 		}
+
+        public DetailedProcessViewModel()
+        {
+			
+        }
 
 	}
 }
