@@ -130,8 +130,7 @@ namespace TaskManager.ViewModels
                 {
 
                     var process = new Process();
-                    process.StartInfo.FileName = $"{EnteredProcess}.exe";
-
+                    process.StartInfo.FileName = EnteredProcess;
 
                     if (BlackProcessNames.Any(p => p == EnteredProcess))
                     {
